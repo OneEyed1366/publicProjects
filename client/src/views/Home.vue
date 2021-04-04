@@ -94,8 +94,8 @@ export default {
     }
   },
   methods: {
-    getData() {
-      this.$store.dispatch('get')
+    getData(arrayName) {
+      this.$store.dispatch('get', arrayName)
     },
     resizeEventHandler() {
       if (window.innerWidth >= 496) {
@@ -108,7 +108,8 @@ export default {
   mounted() {
     window.addEventListener("resize", this.resizeEventHandler);
     setInterval(() => {
-      this.getData()
+      this.getData('bids')
+      this.getData('asks')
     }, 1000);
   }
 };
