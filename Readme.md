@@ -4,7 +4,7 @@ Vue.js (Vuex + Axios)
 ### Дата выполнения
 2021-03-27
 ### Время выполнения
-5.47 ч.
+5 ч. 47 мин.
 ### Посмотреть вживую: http://2021-09-04-koshelek-1.surge.sh/#/
 ### Код-ревью: https://github.com/OneEyed1366/publicProjects/tree/koshelek-0
 ### Что было нужно сделать
