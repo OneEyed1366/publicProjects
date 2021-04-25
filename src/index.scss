@@ -1,0 +1,49 @@
+@import './styles/imports';
+
+body {
+  background: linear-gradient(to right, $colors--gradient-from 33%, $colors--gradient-to 68%);
+  box-sizing: border-box;
+  padding: $paddings--body;
+  margin: 0;
+
+  @media (max-width: 756px) {
+    padding: 10px;
+  }
+}
+a, input {
+  transition: all ease-in .4s;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover, &:active, &:checked, &:focus-visible {
+    outline: none;
+    color: none;
+  }
+}
+h1, h2, h3, h4, h5, h6, p, a {
+  letter-spacing: 1px;
+  font-weight: 300;
+  margin: unset;
+  padding: unset;
+}
+#background {
+  img {
+    position: absolute;
+    width: 10rem;
+    opacity: .6;
+
+    &:nth-child(1) {
+      top: 15%;
+      left: 2%;
+    }
+    &:nth-child(2) {
+      top: 60%;
+      right: 2%;
+    }
+    &:nth-child(3) {
+      width: 6rem;
+      bottom: 0%;
+      right: 30%;
+    }
+  }
+}

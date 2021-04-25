@@ -1,0 +1,171 @@
+@import './styles/imports';
+
+#start-page {
+  grid-area: main;
+}
+.content {
+  color: $colors--main;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  border-radius: $borders--borderRadius;
+  display: grid;
+  grid-template:
+    "navbar" 1fr
+    "main" 2fr;
+  // max-height: calc(100vh - 275px);
+  padding: $paddings--main;
+  transition: all ease-in .4s;
+
+  @media screen and (max-width: 1000px) {
+    padding: $paddings--main-mobile;
+    grid-template:
+      "navbar"
+      "main";
+
+    @media screen and (max-width: 756px) {
+      border-radius: 45px;
+      padding: 30px 15px;
+    }
+  }
+  .main {
+    display: grid;
+    grid-gap: 3rem;
+    grid-template:
+      "content hero" 2fr
+      "btns btns" 1fr/1fr 1fr;
+
+    @media screen and (max-width: 896px) {
+      grid-template:
+        "content"
+        "hero"
+        "btns";
+    }
+
+    &__block {
+      display: flex;
+
+      &:nth-child(1) {
+        grid-area: content;
+        flex-flow: column wrap;
+        @media screen and (max-width: 756px) {
+          margin: 1rem 0 0 0;
+        }
+
+        > * {
+          &:nth-child(2), &:nth-child(3) {
+            margin: 1rem 0;
+          }
+        }
+      }
+      &:nth-child(2) {
+        grid-area: hero;
+      }
+      &:nth-child(3) {
+        grid-area: btns;
+        @media screen and (max-width: 756px) {
+          flex-flow: column wrap;
+          align-items: center;
+
+          button {
+            min-width: 85vw;
+          }
+        }
+      }
+    }
+    &__hero {
+      width: 100%;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    &__title {
+      display: flex;
+
+      h1 {
+        font-weight: 600;
+        @include font-size(20px, 40px);
+      }
+    }
+    &__form {
+      label {
+        @media screen and (max-width: 526px) {
+          display: flex;
+          flex-flow: column wrap;
+        }
+      }
+      button {
+        font-size: 13px;
+        color: #f5748a;
+        background-color: $colors--main;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        transition: $transition--main;
+        position: absolute;
+        padding: 5.5px 15px;
+        margin: 0;
+
+        &:hover, &:active {
+          span::after {
+            width: 100%;
+          }
+        }
+        span::after {
+          content: "";
+          display: block;
+          transition: $transition--nav;
+          background-color: #f5748a;
+          height: 1px;
+          width: 0;
+        }
+      }
+      input {
+        font-size: 13px;
+        color: $colors--main;
+        background-color: transparent;
+        border: 1px solid $colors--main;
+        border-radius: 5px 0 0 5px;
+        padding: 5px;
+        min-width: 70%;
+        margin: 0;
+      }
+      button, input {
+        @media screen and (max-width: 856px) {
+          padding: 5.5px;
+          margin: .4rem 0;
+          position: initial;
+
+          @media screen and (max-width: 526px) {
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+    &__btns {
+      button {
+        transition: $transition--main;
+        color: #fee8e9;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(25px);
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 15px 5px rgba(50, 50, 50, 0.1);
+        min-height: 5rem;
+        padding: $paddings--btn;
+        margin: 0 0 11px 0;
+
+        &:hover, &:active {
+          background-color: rgba(255, 255, 255, 0.3);
+        }
+      }
+      &:nth-child(2) {
+        margin: $margins--btns;
+
+        @media screen and (max-width: 756px) {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

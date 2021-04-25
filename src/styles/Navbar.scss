@@ -1,0 +1,122 @@
+@import './imports';
+
+#navbar {
+  grid-area: navbar;
+  align-items: baseline;
+  display: grid;
+  grid: 1fr/1fr 2fr;
+  @media screen and (max-width: 856px) {
+    grid: 1fr/1fr 1fr;
+    align-items: center;
+  }
+
+  .block {
+    &__hamburger {
+      display: none;
+
+      @include media-query('(max-width: 856px)') {
+        grid-row: 1;
+        grid-column: 2;
+        display: flex;
+        flex-flow: column wrap;
+        align-content: flex-end;
+      }
+
+      > * {
+        background-color: $colors--main;
+        transition: $transition--main;
+        height: 5px;
+        width: 35px;
+        margin: 3px;
+
+        &:nth-child(1).active {
+          transform: rotate(-45deg) translate(-8px, 6px);
+        }
+        &:nth-child(2).active {
+          opacity: 0;
+        }
+        &:nth-child(3).active {
+          transform: rotate(45deg) translate(-8px, -8px);
+        }
+      }
+    }
+    &__item {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      align-items: center;
+    }
+    &__logo {
+      grid-column: 1;
+      justify-content: flex-start;
+    }
+    &__nav {
+      grid-column: 2;
+      text-transform: uppercase;
+
+      @media screen and (max-width: 856px) {
+        // background-color: $colors--main;
+        grid-column: 1/-1;
+      }
+
+      ul {
+        animation: displayToggle .9s;
+        list-style: none;
+        @include font-size(8px, 16px);
+        @include flexgrid(6, 20px, unset);
+        @media screen and (max-width: 856px) {
+          flex-flow: column wrap;
+          display: none;
+
+          &.active {
+            font-size: 18px;
+            color: $colors--main;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, .2);
+            display: flex;
+            flex-flow: column wrap;
+            align-content: flex-start;
+            width: 100%;
+            margin: 0;
+            padding: 1rem;
+
+            li {
+              animation: displayToggle .7s;
+              width: 100%;
+              margin: 0;
+              padding: .5rem 0;
+            }
+          }
+        }
+
+        li {
+          margin: $margins--navEls;
+
+          &::after {
+            content: "";
+            background-color: $colors--main;
+            transition: $transition--nav;
+            height: 1px;
+            width: 0%;
+            display: block;
+          }
+
+          &:hover, &:active {
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes displayToggle {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

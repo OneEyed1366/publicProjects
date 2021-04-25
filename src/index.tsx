@@ -1,11 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import cloud from './assets/cloud.svg';
+
+function Clouds() {
+  return (
+    <div id="background">
+      <img src={ cloud } alt=""/>
+      <img src={ cloud } alt=""/>
+      <img src={ cloud } alt=""/>
+    </div>
+  )
+}
+
 ReactDOM.render(
   <React.StrictMode>
+    <Clouds />
     <App />
   </React.StrictMode>,
   document.getElementById('root')
