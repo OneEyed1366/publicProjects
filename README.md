@@ -4,7 +4,7 @@ TypeScript (React)
 ## Дата выполнения
 2021-04-24
 ## Время выполнения
-8.47 ч.
+8.9 ч.
 ### Посмотреть вживую: http://2021-04-25-payless--glass-0.surge.sh
 ### Код-ревью: https://github.com/OneEyed1366/publicProjects/tree/payless--glass-0
 ### Что было нужно сделать
