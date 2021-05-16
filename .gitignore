@@ -27,3 +27,6 @@ pnpm-debug.log*
 #deploy files
 *.bat
 *.sh
+#deploy files
+*.bat
+*.sh
