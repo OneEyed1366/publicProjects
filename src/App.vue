@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <navbar />
-    <router-view
-      :class="{ 'blurred': blurred }"
-    />
+    <transition name="fade">
+      <router-view
+        :class="{ 'blurred': blurred }"
+      />
+    </transition>
   </div>
 </template>
 
@@ -52,6 +54,11 @@ p
 a
   &:hover, &:active
     color colorsMain
+iframe
+  border none
+  height 100%
+  width 100%
+  min-height 40vmax
 button
   outline none
   border none
@@ -62,9 +69,9 @@ button
   border-radius 5px
   font-size 3vmax
   &:hover, &:active, &.active
-    color colorsBlack
     border-color colorsGrey
     background-color colorsWhite
+    color colorsBlack
 ul
   margin-inline 0
   margin-block 0

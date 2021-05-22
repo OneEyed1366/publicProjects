@@ -128,8 +128,8 @@
 
     &__block
       &:last-child p
-        display grid
-        grid repeat(auto-fit, minmax(30vmax, 1fr))\/repeat(auto-fit, minmax(45vmax, 1fr))
+        display flex
+        flex-flow row wrap
         h3
           text-align right
         a
@@ -144,6 +144,7 @@
             background-color #2e5d5a
           img
             width 100%
+            height 100%
           figcaption
             text-transform capitalize
             text-align right
@@ -160,15 +161,13 @@
       padding 1vmax
       margin 1vmax
       flex-grow 1
-      // a
-      //   width 100%
+      @media (min-width: sm)
+        width 45%
     &__form
       display flex
       flex-flow row wrap
       justify-content space-around
       align-items center
-      // display grid
-      // grid "form" 2fr "sort" 1fr;
 
       label, legend
         font-size 3vmax
@@ -186,10 +185,6 @@
         flex-flow: row wrap;
         justify-content: space-around;
         align-items: center;
-        // display grid
-        // grid repeat(auto-fit, minmax(60vmax, 1fr))\/repeat(3, 1fr)
-        // @media (max-width: sm)
-        //   grid (repeat(auto-fit, minmax(60vmax, 1fr))\/repeat(2, 1fr))
       legend
         align-self center
       label
@@ -226,6 +221,9 @@ interface Data {
 }
 
 export default Vue.extend({
+  metaInfo: {
+    title: 'Смотреть фильмы онлайн, бесплатно, без регистрации',
+  },
   components: {
     Paginations,
   },

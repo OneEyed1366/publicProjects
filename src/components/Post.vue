@@ -29,7 +29,6 @@
     padding 1 rem
     @media (max-width: sm)
       padding-left 11vmax
-      // text-align right
   &__header
     text-transform uppercase
     text-align center

@@ -5,19 +5,24 @@
     </div>
     <swiper :options="propsOptions">
       <swiper-slide v-for="slide in propsSlides" :key="slide.id">
-        <router-link :to="`films/${slide.id}`" class="content__slide">
-          <img alt=""
-            :src="slide.hero"
-            style="width: 100%"
-          >
-          <h6>
-            {{ slide.title }}
-            --
-            {{ slide.params.genre.join(', ').replace(/\b\w/g, (l) => l.toUpperCase()) }}
-          </h6>
-        </router-link>
+        <template v-if="'id' in slide">
+          <router-link :to="`films/${slide.id}`" class="content__slide">
+            <img alt=""
+              :src="slide.hero"
+              style="width: 100%"
+            >
+            <h6>
+              {{ slide.title || slide.name }}
+              --
+              {{ slide.params.genre.join(', ').replace(/\b\w/g, (l) => l.toUpperCase()) || '' }}
+            </h6>
+          </router-link>
+        </template>
+        <template v-else>
+          <img :src="slide.hero" alt="">
+          <h6>{{ slide.name }}</h6>
+        </template>
       </swiper-slide>
-      <!-- <div class="swiper-pagination"></div> -->
     </swiper>
   </section>
 </template>

@@ -56,9 +56,6 @@
         margin 1rem
         &:first-child
           font-size 15px
-      // span:last-child
-      //   h1
-      //     font-size 30px
     &__text
       span
         font-size 19px
@@ -74,10 +71,6 @@
         border-radius 5px
         &:hover, &:active
           color colorsBlack
-        // a::before
-        //   content '> '
-        //   color colorsWhite
-        //   font-size 18px
 </style>
 
 <script lang="ts">

@@ -87,9 +87,6 @@ export default Vue.extend({
           : this.pagination.current - 2,
         (this.pagination.current - 1) + this.pagination.step,
       );
-      // if (this.pagination.current + this.pagination.step <= this.pages) {
-      //   return result.slice(this.pagination.current)
-      // }
     },
   },
 });

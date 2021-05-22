@@ -114,6 +114,9 @@ import FunFacts from '@/components/Fun-facts.vue';
 import Vue from 'vue';
 
 export default Vue.extend({
+  metaInfo: {
+    title: 'О нас',
+  },
   components: {
     FunFacts,
   },

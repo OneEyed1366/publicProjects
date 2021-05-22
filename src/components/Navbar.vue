@@ -78,16 +78,6 @@ hamburger(
   height 100%
   width 6vmax
   max-width 50%
-  // &::after
-  //   content ''
-  //   display block
-  //   width 0%
-  //   height 100%
-  //   position fixed
-  //   left 0
-  //   opacity .5
-  //   background-color transparent
-  //   transition transitionsMain
 
   &.active
     @media screen and (max-width sm)
@@ -125,11 +115,6 @@ hamburger(
       @media screen and (min-width sm)
         height 6vmax
         width 6vmax
-    // &__logo, &__hamburger
-    //   @media screen and (min-width sm)
-    //     width 100px
-    //     @media screen and (max-width sm)
-    //       width 90px
     &__logo
       z-index 2
       font-size 3rem
@@ -193,8 +178,6 @@ hamburger(
       position absolute
       bottom 0
       @media screen and (max-width sm)
-        // height 90px
-        // width fit-content
         background-color colorsBlack
 </style>
 

@@ -3,20 +3,21 @@ import Vuex from 'vuex';
 import intfStore from '../interfaces/store';
 
 Vue.use(Vuex);
-interface storeStateFilmsActors {
+
+interface FilmsActors {
   name: string[];
   hero: string[] | URL[];
 }
-interface storeStateFilms {
+interface Films {
   id: number,
   title: string,
   hero: string | URL,
   imgs: string[] | URL[],
   desc: string | string[],
-  trailer?: string[] | URL[],
-  film: string[] | URL[],
+  film: string | string[] | URL[],
+  trailer: string | string[] | boolean,
   // params: {
-  //   [index: string]: string[] | number[] | storeStateFilmsActors[]
+  //   [index: string]: string[] | number[] | FilmsActors[]
   // },
   params: {
     genre: string[],
@@ -27,7 +28,7 @@ interface storeStateFilms {
     studio: string[],
     director: string[],
     imbd?: number[],
-    cast: storeStateFilmsActors[],
+    cast: FilmsActors[],
   },
 }
 
@@ -46,7 +47,8 @@ export default new Vuex.Store({
         hero: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_episode/2588807/2588807-1576184167093-ebcb361a34e76.jpg',
         imgs: [''],
         desc: 'Some aaaawesome text righ here',
-        film: '',
+        film: 'https://www.youtube.com/embed/dy1rmbEzYmc',
+        trailer: 'https://www.youtube.com/embed/dy1rmbEzYmc',
         params: {
           genre: [
             'comedy',
@@ -70,6 +72,18 @@ export default new Vuex.Store({
               name: 'Shaya La Baff',
               hero: 'https://avatars.mds.yandex.net/get-zen_doc/235990/pub_5b98cd2c23420100aaa0e192_5b9909fc343d6c00a9f56630/scale_1200',
             },
+            {
+              name: 'Shaya La Baffeed',
+              hero: 'https://avatars.mds.yandex.net/get-zen_doc/235990/pub_5b98cd2c23420100aaa0e192_5b9909fc343d6c00a9f56630/scale_1200',
+            },
+            {
+              name: 'Shaya La Baffasdf',
+              hero: 'https://avatars.mds.yandex.net/get-zen_doc/235990/pub_5b98cd2c23420100aaa0e192_5b9909fc343d6c00a9f56630/scale_1200',
+            },
+            {
+              name: 'Shaya La Baffаааа',
+              hero: 'https://avatars.mds.yandex.net/get-zen_doc/235990/pub_5b98cd2c23420100aaa0e192_5b9909fc343d6c00a9f56630/scale_1200',
+            },
           ],
         },
       },
@@ -79,7 +93,8 @@ export default new Vuex.Store({
         hero: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_episode/2588807/2588807-1576184167093-ebcb361a34e76.jpg',
         imgs: [''],
         desc: 'Some aaaawesome text righ here (ver.2)',
-        film: '',
+        film: 'https://www.youtube.com/embed/dy1rmbEzYmc',
+        trailer: false,
         params: {
           genre: [
             'comedy',
@@ -110,6 +125,7 @@ export default new Vuex.Store({
         imgs: [''],
         desc: 'Some aaaawesome text righ here (ver.2)',
         film: '',
+        trailer: '',
         params: {
           genre: [
             'comedy',
@@ -140,6 +156,7 @@ export default new Vuex.Store({
         imgs: [''],
         desc: 'Some aaaawesome text righ here (ver.2)',
         film: '',
+        trailer: '',
         params: {
           genre: [
             'Боевик',
@@ -170,6 +187,7 @@ export default new Vuex.Store({
         imgs: [''],
         desc: 'Some aaaawesome text righ here (ver.2)',
         film: '',
+        trailer: '',
         params: {
           genre: [
             'comedy',
@@ -200,6 +218,7 @@ export default new Vuex.Store({
         imgs: [''],
         desc: 'Some aaaawesome text righ here (ver.2)',
         film: '',
+        trailer: '',
         params: {
           genre: [
             'comedy',
@@ -230,6 +249,7 @@ export default new Vuex.Store({
         imgs: [''],
         desc: 'Some aaaawesome text righ here (ver.2)',
         film: '',
+        trailer: '',
         params: {
           genre: [
             'comedy',
@@ -260,6 +280,7 @@ export default new Vuex.Store({
         imgs: [''],
         desc: 'Some aaaawesome text righ here (ver.2)',
         film: '',
+        trailer: '',
         params: {
           genre: [
             'comedy',
@@ -290,6 +311,7 @@ export default new Vuex.Store({
         imgs: [''],
         desc: 'Some aaaawesome text righ here (ver.2)',
         film: '',
+        trailer: '',
         params: {
           genre: [
             'comedy',
@@ -320,6 +342,7 @@ export default new Vuex.Store({
         imgs: [''],
         desc: 'Some aaaawesome text righ here (ver.2)',
         film: '',
+        trailer: '',
         params: {
           genre: [
             'comedy',
@@ -371,7 +394,8 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    popular: (state) => state.films.find((film: storeStateFilms) => film.title !== ''),
+    getById: (state) => (id: number) => state.films.find((film: Films) => film.id === id),
+    popular: (state) => state.films.find((film: Films) => film.title !== ''),
     getList: (state) => (params: {[index: string]: string}) => [...new Set(
       state[params.where].reduce(
         (prev: string[], item: any) => [...prev, ...item.params[params.what]],
@@ -379,9 +403,14 @@ export default new Vuex.Store({
       ),
     )],
     getFilms: (state) => (filters: {[index: string]: string}) => state.films
-      .filter((film: storeStateFilms) => Object.values(filters)
+      .filter((film: Films) => Object.values(filters)
         .every((filter: string) => Object.values(film.params)
           .reduce((acc: any, curr: any) => [...acc, ...curr], []).includes(filter))),
+    getFilmsSimilars: (state) => (toCompare: Films) => state.films
+      .filter((film: Films) => Object.values(toCompare.params)
+        .reduce((acc: any, curr: any) => [...acc, ...curr], [])
+        .some((param: string[] | number[] | FilmsActors[]) => Object.values(film.params)
+          .reduce((acc: any, curr: any) => [...acc, ...curr], []).includes(param))),
   },
   modules: {
   },

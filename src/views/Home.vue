@@ -7,7 +7,7 @@
         v-for="film in films"
         :key="film.id"
       >
-        <a href="" class="content__slider"
+        <a :href="`films/${film.id}`" class="content__slider"
           :style="{
             background: `url(${film.hero})`, backgroundSize: 'cover',
             backgroundPosition: 'center top'
@@ -149,6 +149,9 @@ import Promo from '@/components/Promo.vue';
 import Post from '@/components/Post.vue';
 
 export default Vue.extend({
+  metaInfo: {
+    title: 'Movie - кинофильмы онлайн',
+  },
   name: 'Home',
   components: {
     Carousel,

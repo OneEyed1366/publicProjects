@@ -141,6 +141,9 @@ interface Data {
 }
 
 export default Vue.extend({
+  metaInfo: {
+    title: 'Контакты',
+  },
   data(): Data {
     return {
       form: {},
