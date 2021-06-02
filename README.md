@@ -3,7 +3,7 @@
 TypeScript/Vue.js
 ## Время выполнения:
 2д. 7ч. 30мин.
-### Посмотреть вживую: http://2021-06-02-payless--iPool-3.surge.sh
+### Посмотреть вживую: http://2021-06-02-payless--iPool-0.surge.sh
 ### Код-ревью: https://github.com/OneEyed1366/publicProjects/tree/payless--iPool-3
 ### Что было нужно сделать:
 Скопировать сайт с шаблона Template Monster.
