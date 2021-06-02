@@ -1,0 +1,119 @@
+@mixin hamburger(
+    $media-q,
+    $line-color: black,
+    $line-height: 5px,
+    $line-width: 35px,
+    $line-margin: 3px,
+    $transitiions: all ease .4s,
+    $child-pos-first: (-7px, 7px),
+    $child-pos-last: (-8px, -9px),
+) {
+    display: none;
+    @content;
+
+    @media (max-width: #{$media-q}) {
+        display: flex;
+        flex-flow: column wrap;
+        align-content: flex-end;
+    }
+
+    > * {
+        background-color: $line-color;
+        transition: $transitiions;
+        height: $line-height;
+        width: $line-width;
+        margin: $line-margin;
+
+        &:nth-child(1).active {
+        transform: rotate(-45deg) translate($child-pos-first);
+        }
+        &:nth-child(2).active {
+        opacity: 0;
+        }
+        &:nth-child(3).active {
+        transform: rotate(45deg) translate($child-pos-last);
+        }
+    }
+}
+@mixin sidebar(
+    $media: "(max-width: 991px)",
+    $pos: fixed,
+    $direction: 'left',
+    $step-aside: 30px,
+    $step-top: $step-aside,
+    $nav-width: 300px,
+    $bg-color: white,
+    $hamb-className: "hamburger",
+    $nav-className: "navbar",
+) {
+    .#{$hamb-className} {
+        @include hamburger(
+        $media,
+        ) {
+        position: $pos;
+        #{$direction}: $nav-width + $step-aside;
+        top: $step-top;
+        }
+    }
+    .#{$nav-className} {
+        transition: all ease .4s;
+        position: $pos;
+        width: $nav-width;
+        height: 100%;
+        background-color: $bg-color;
+        #{$direction}: -$nav-width;
+
+        &.active {
+        left: 0;
+        }
+
+        ul {
+            list-style: none;
+            width: 80%;
+            height: 100%;
+            padding: 2rem;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: flex-start;
+        }
+    }
+}
+@mixin arrow(
+    $img,
+    $class: '.content__arrow',
+    $pseudo-class: 'after',
+    $pos: top,
+    $h: 68px,
+    $a-color: #ffffff,
+    $class-hover: -$h + ($h / 2),
+    $pseudo-pos: -$h,
+    $class-pos: -$h + 18px,
+) {
+    & {
+        position: relative;
+    }
+    &::#{$pseudo-class} {
+        z-index: 1;
+        content: '';
+        display: block;
+        position: absolute;
+        background: url('#{$img}') center no-repeat;
+        height: $h;
+        width: 168px;
+        justify-self: center;
+        #{$pos}: $pseudo-pos;
+    }
+    #{$class} {
+        z-index: 2;
+        position: absolute;
+        justify-self: center;
+        transition: $transitions--main;
+        #{$pos}: $class-pos;
+        &:hover, &:active {
+            #{$pos}: $class-hover;
+        }
+        > * {
+            color: $a-color;
+        }
+    }
+}

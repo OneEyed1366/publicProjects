@@ -1,0 +1,18 @@
+// BREAKPOINTS
+$lg: 1000px;
+$md: 756px;
+$sm: 586px;
+// FONTS
+$font--basic: 400 13px/23px "Ubuntu", sans-serif;
+// COLORS
+$colors--main: #42b773;
+$colors--white: #ffffff;
+$colors--grey: #f5f5f6;
+$colors--black: #42464f;
+$colors--light-green: #a9dc56;
+$colors--dark-green: #42b773;
+$colors--linear: linear-gradient(75deg, $colors--dark-green 34%, $colors--light-green 66%);
+// BORDER-RADIUS
+$border-radius--main: 4px;
+// TRANTISIONS
+$transitions--main: all ease-in-out .4s;
