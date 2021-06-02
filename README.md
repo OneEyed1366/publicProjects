@@ -1,24 +1,17 @@
-# 3-ipool
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# iPool -> Landing Page
+## Язык/Framework:
+TypeScript/Vue.js
+## Время выполнения:
+2д. 7ч. 30мин.
+### Посмотреть вживую: http://2021-06-02-payless--iPool-3.surge.sh
+### Код-ревью: https://github.com/OneEyed1366/publicProjects/tree/payless--iPool-3
+### Что было нужно сделать:
+Скопировать сайт с шаблона Template Monster.
+Вёрстка: CSSFlexbox/CSSGrid
+Препроцессор: SCSS
+Перемещение к блокам: Vue-ScrollTo
+Мета-теги: Vue-meta
+БД: -
+Модули: Vue-meta, Vue-ScrollTo, Style-Resources-Loader, ESLint
+Структурные особенности: Папка Views была поделена на родительный файл Home и папку Sections, в каждой из которых был представлен строго определенный блок. В случае, если внутри 1 логического блока (Benefits) было необходимо включить несколько дочерних, именем блока называлась папка, внутри которой размещались конкретного логического блока
+Вынесено в компоненты: Навигационная панель, Счетчик с динамическим отображением чисел, Вертикальные и Горизонтальные блоки для секций Facts, Benefits & Services, Разделительный блок со ссылками на СоцСети между Works & Contacts""
